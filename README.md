@@ -23,7 +23,12 @@ Version: **1**
 - YEDB libraries and client / server implementations are free, open source and
   provided under Apache 2.0 software license.
 
-## 1.1 References
+## 1.1 Implementations
+
+- [yedb-py](https://github.com/alttch/yedb-py) - Python library and
+  client/server.
+
+## 1.2 References
 
 The following 3rd party technologies are mentioned in this document:
 
