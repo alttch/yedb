@@ -292,7 +292,7 @@ The object MAY contain additional fields.
 
 If the database engine has data type schemas (see 2.4.3) implemented, the
 *schema* field for *.schema* keys MUST contain the value "JSON Schema VERSION",
-e.g. "JSON Schema draft-7".
+e.g. "JSON Schema Draft-7".
 
 If schema implements custom data types, this MUST be clearly and properly
 explained. E.g. if a key schema defines that keys must contain valid Python
