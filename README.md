@@ -113,7 +113,14 @@ integrity.
 | ------ | ------------------------------------------- |
 | 1      | SHA256-checksum of serialized data (HEX)    |
 | 2      | Set timestamp (hex)                         |
-| 3-N    | Serialized data, with LF (0x0A) ending      |
+| 3-N    | Serialized data                             |
+
+- the strings MUST have no white spaces
+
+- the file MUST have UNIX (new line = LF) encoding
+
+- the serialized data SHOULD have LF ending to let key files be edited with
+  regular text editors.
 
 ### 2.4 Data serialization
 
@@ -187,6 +194,7 @@ provide setters for them:
 | --------------------- | ------ | ------- | -------------------------------------- |
 | auto\_repair          | bool   | true    | Auto-repair the database when opened   |
 | auto\_flush           | bool   | true    | Flush key data to disk immediately     |
+| lock\_ ex             | bool   | true    | Lock the database exclusively on open  |
 | write\_modified\_only | bool   | true    | Write to disk modified key values only |
 
 ### 3.3 Mandatory methods
@@ -233,12 +241,13 @@ The method MUST return the following data object:
 
 | Name                | Type             | Description                                        |
 | ------------------- | ---------------- | -------------------------------------------------- |
-| repair\_recommended | bool             | Database repair is recommended (not auto-repaired) |
 | auto\_flush         | bool             | Flush key data to disk immediately                 |
-| path                | bool             | Database path (server local                        |
-| server              | (String, String) | Server engine ID / Version (custom values)         |
-| fmt                 | String           | Current data serialization format                  |
+| checksums           | bool             | Checksums enabled                                  |
 | created             | u64              | Database creation timestamp                        |
+| fmt                 | String           | Current data serialization format                  |
+| path                | bool             | Database path (server local                        |
+| repair\_recommended | bool             | Database repair is recommended (not auto-repaired) |
+| server              | (String, String) | Server engine ID / Version (custom values)         |
 | version             | u16              | Engine version                                     |
 
 The object MAY contain additional fields.
