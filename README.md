@@ -150,6 +150,23 @@ formats:
 
 The database MAY implement additional data types.
 
+#### 2.4.2 Data type schemas
+
+The database MAY implement strict type / structure checking for keys.
+
+If implemented, the implementation MUST satisfy the following requirements:
+
+- Key schemas are defined in keys *.schema/path/to/key* or *.schema/path*
+
+- A schema can be applied to individual keys or to all their sub keys, unless
+  the lower-level schema is defined. E.g. the schema, named *.schema/group1*
+  is applied to all *group1* keys, unless some key* group1/key1* has the
+  individual schema at *.schema/group1/key1*.
+
+- The key schemas MUST implement [JSON Schema](https://json-schema.org).
+
+- The key schemas MAY extend JSON Schema and implement additional data types.
+
 ## 3. Engine
 
 ### 3.1 Basics
@@ -271,6 +288,10 @@ The method MUST return the following data object:
 | value               |                  | Key value                                                  |
 
 The object MAY contain additional fields.
+
+If the database engine has data type schemas (see 2.4.2) implemented, the
+*schema* field for *.schema* keys MUST contain the value "JSON Schema VERSION",
+e.g. "JSON Schema draft-7".
 
 ## 4. Engine API
 
