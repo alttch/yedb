@@ -293,9 +293,9 @@ If the database engine has data type schemas (see 2.4.3) implemented, the
 *schema* field for *.schema* keys MUST contain the value "JSON Schema VERSION",
 e.g. "JSON Schema draft-7".
 
-If schema implements custom data types, this MUST be properly explained (e.g.
-if a key schema defines that keys must contain valid Python code, the value
-SHOULD contain "Python" or the link to https://www.python.org).
+If schema implements custom data types, this MUST be clearly and properly
+explained (e.g.  if a key schema defines that keys must contain valid Python
+code, the value SHOULD contain "Python" or the link to https://www.python.org).
 
 ## 4. Engine API
 
