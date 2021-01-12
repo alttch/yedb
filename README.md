@@ -158,7 +158,7 @@ If implemented, the implementation MUST satisfy the following requirements:
 
 - Key schemas are defined in keys *.schema/path/to/key* or *.schema/path*
 
-- A schema can be applied to individual keys or to all their sub keys, unless
+- A schema MUST be applied to individual keys or to all their sub keys, unless
   the lower-level schema is defined. E.g. the schema, named *.schema/group1*
   is applied to all *group1* keys, unless some key* group1/key1* has the
   individual schema at *.schema/group1/key1*.
