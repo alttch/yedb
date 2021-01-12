@@ -296,7 +296,7 @@ e.g. "JSON Schema draft-7".
 If schema implements custom data types, this MUST be clearly and properly
 explained. E.g. if a key schema defines that keys must contain valid Python
 code, the value MUST contain either "Python" or the link to
-https://www.python.org).
+[python.org](https://python.org/).
 
 ## 4. Engine API
 
