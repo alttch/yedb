@@ -136,16 +136,19 @@ formats:
 | cbor    | 3    | N          | .cb         | .cbc        | binary |
 | yaml    | 4    | N          | .yml        | .ymlc       | text   |
 
-#### 2.4.2 Field types
+#### 2.4.2 Data types
 
-- Null
-- Boolean
-- Number
-- String
-- Array/List
-- Object/Dictionary
+| Name        | Mandatory |
+| ----------- | --------- |
+| null        | Y         |
+| boolean     | Y         |
+| number      | Y         |
+| string      | Y         |
+| array       | Y         |
+| object      | Y         |
+| bytes       | N         |
 
-The binary data type is optional.
+The database MAY implement additional data types.
 
 ## 3. Engine
 
@@ -245,10 +248,27 @@ The method MUST return the following data object:
 | checksums           | bool             | Checksums enabled                                  |
 | created             | u64              | Database creation timestamp                        |
 | fmt                 | String           | Current data serialization format                  |
-| path                | bool             | Database path (server local                        |
+| path                | bool             | Database path (server local)                       |
 | repair\_recommended | bool             | Database repair is recommended (not auto-repaired) |
 | server              | (String, String) | Server engine ID / Version (custom values)         |
 | version             | u16              | Engine version                                     |
+
+The object MAY contain additional fields.
+
+#### 3.3.5 Key Explain
+
+The method MUST return the following data object:
+
+| Name                | Type             | Description                                                |
+| ------------------- | ---------------- | ---------------------------------------------------------- |
+| file                | String           | Key file                                                   |
+| schema              | String           | JSON schema key if schema is defined                       |
+| len                 | u64              | length for strings, objects and arrays, null for others    |
+| mtime               | u64              | Key file modification timestamp                            |
+| stime               | u64              | Key modification timestamp, null if checksums are disabled |
+| sha256              |                  | SHA256-checksum, MUST be serialized to String              |
+| type                |                  | Value type (see 2.4.2), MUST be serialized to String       |
+| value               |                  | Key value                                                  |
 
 The object MAY contain additional fields.
 
