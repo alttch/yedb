@@ -7,20 +7,21 @@ Version: **1**
 - YEDB is the database format / engine, designed to store configuration files
   and other reliable data.
 
-- YEDB is designed for reliability: the data survives any power loss, unless
-  the file system is broken.
+- YEDB is designed for reliability: the data survive any power loss, unless the
+  file system is broken.
 
 - YEDB is the data serialization / storage engine, used by
   [AlterTech](https://www.altertech.com) in industrial and embedded software
   products.
 
-- YEDB has the free data format anyone can use under Apache 2.0 software
+- YEDB has the free data format which can be used under Apache 2.0 software
   license.
 
-- YEDB uses the very simple data format: keys are stored as serialized regular
-  files, which helps the database survive disasters and is highly repairable.
+- YEDB uses a very simple data format: keys are stored as serialized regular
+  files. The format helps the database survive disasters and is highly
+  repairable.
 
-- YEDB libraries and client / server implementations are free, open source and
+- YEDB libraries and client / server implementations are free, open-source and
   provided under Apache 2.0 software license.
 
 ## 1.1 Implementations
@@ -30,7 +31,7 @@ Version: **1**
 
 ## 1.2 References
 
-The following 3rd party technologies are mentioned in this document:
+The following third-party technologies are mentioned in this document:
 
 - JSON: https://www.json.org
 
@@ -69,9 +70,9 @@ file MUST be serialized as JSON and contain the following fields:
 
 #### 2.3.1 General
 
-Key files MUST be stored in regular files The format MUST be kept to allow
+Key files MUST be stored in regular files. The format MUST be kept to allow
 system administrators repair a database without any external tools. The full
-path tree, where the key file is stored, MUST represent the key full name.
+path tree, where a key file is stored, MUST represent the key full name.
 
 Example: a key, named "my/cool/key" should be:
 
@@ -126,7 +127,7 @@ integrity.
 
 #### 2.4.1 Data formats
 
-The current YEDB specifications document defines following serialization
+The current YEDB specifications document defines the following serialization
 formats:
 
 | Name    | Code | Mandatory  | File suffix | With c-sums | Type   |
@@ -156,11 +157,11 @@ The database MAY implement strict type / structure checking for keys.
 
 If implemented, the implementation MUST satisfy the following requirements:
 
-- Key schemas are defined in keys *.schema/path/to/key* or *.schema/path*
+- Key schemas are defined as *.schema/path/to/key* or *.schema/path* keys.
 
 - A schema MUST be applied to individual keys or to all their sub keys, unless
-  the lower-level schema is defined. E.g. the schema, named *.schema/group1*
-  is applied to all *group1* keys, unless some key* group1/key1* has the
+  the lower-level schema is defined. E.g. the schema named *.schema/group1* is
+  applied to all *group1* keys, unless some key *group1/key1* has the
   individual schema at *.schema/group1/key1*.
 
 - The key schemas MUST implement [JSON Schema](https://json-schema.org).
@@ -174,13 +175,13 @@ If implemented, the implementation MUST satisfy the following requirements:
 - The database engine MUST support locking. Usually the locking can be performed
 with an exclusively-locked file, respected by other engine instances.
 
-- The engine MUST allow variable location of the lock file, to allow using
-databases on read-only file systems.
+- The engine MUST allow variable location of the lock file, allowing using of
+  databases on read-only file systems.
 
-- Embedded engine MUST be thread-safe out-of-the-box or provide documentation
-  how to implement thread-safe usage.
+- The embedded engine MUST be thread-safe out-of-the-box or provide
+  documentation how to implement thread-safe usage.
 
-- Embedded engine MAY offer asynchronous read/writes if keys are stored on
+- The embedded engine MAY offer asynchronous read/writes if keys are stored on
   different physical drives.
 
 - Client/server architecture is optional.
@@ -188,7 +189,7 @@ databases on read-only file systems.
 - The engine MAY implement data caching for read operations ONLY.
 
 - Engine methods MAY accept keys with leading slashes ("/path/to/key"), but
-  MUST represent all keys without leading slashes.
+  MUST represent all keys without them.
 
 #### 3.1.1 Writing and flushing data
 
