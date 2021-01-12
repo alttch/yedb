@@ -294,7 +294,7 @@ If the database engine has data type schemas (see 2.4.3) implemented, the
 e.g. "JSON Schema draft-7".
 
 If schema implements custom data types, this MUST be clearly and properly
-explained (e.g.  if a key schema defines that keys must contain valid Python
+explained. E.g. if a key schema defines that keys must contain valid Python
 code, the value MUST contain either "Python" or the link to
 https://www.python.org).
 
