@@ -334,12 +334,12 @@ structure:
 For binary data exchange (UNIX/TCP sockets), the following format MUST be kept
 for both JSON RPC API requests and responses:
 
-| Byte range | Size | Value                               |
-| ---------- | ---- | ----------------------------------- |
-| 0          | 1    | Engine version                      |
-| 1          | 1    | Data format code (2 for msgpack)    |
-| 2-5        | 4    | JSON RPC frame length               |
-| 6-         |      | JSON RPC request / response frame   |
+| Byte range | Size | Value                                |
+| ---------- | ---- | ------------------------------------ |
+| 0          | 1    | Engine version                       |
+| 1          | 1    | Data format code (2 for msgpack)     |
+| 2-5        | 4    | JSON RPC frame length (little-endian |
+| 6-         |      | JSON RPC request / response frame    |
 
 ### 4.5 HTTP
 
@@ -379,7 +379,7 @@ The error codes, returned by server, MUST match the following:
 
 ## 5. Dump files
 
-If the engine or a client create / load dump files, they MUST have data
+If the engine or a client create / load dump files, these files MUST have data
 serialized with MessagePack and have the following format:
 
 ### 5.1 File header
@@ -391,7 +391,7 @@ serialized with MessagePack and have the following format:
 
 ### 5.2 Key data
 
-Stored from file byte 2, for each key:
+Stored starting from byte 2, for each key:
 
 | Byte range | Size | Value                               |
 | ---------- | ---- | ----------------------------------- |
