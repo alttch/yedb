@@ -350,6 +350,33 @@ The HTTP transport MUST satisfy the following conditions:
 - The API MUST accept MessagePack-encoded payloads for requests with content
   type set to either "application/msgpack" or "application/x-msgpack".
 
+### 4.6 JSON RPC Error codes
+
+- Error replies SHOULD also include correct and clear error messages.
+
+- Schema validation errors MUST return the detailed error messages.
+
+The error codes, returned by server, MUST match the following:
+
+### 4.6.1 Protocol errors
+
+| Code    | Description                                    |
+| ------- | -----------------------------------------------|
+| -32600  | Invalid request                                |
+| -32601  | Method not found                               |
+| -32602  | Invalid method parameters                      |
+
+### 4.6.2 Engine errors
+
+| Code    | Description                                    |
+| ------- | -----------------------------------------------|
+| -32001  | Key not found                                  |
+| -32002  | Data error, checksum error                     |
+| -32003  | Schema validation error                        |
+| -32004  | OS I/O errors: device errors, permissions etc. |
+| -32000  | All other server errors                        |
+
+
 ## 5. Dump files
 
 If the engine or a client create / load dump files, they MUST have data
