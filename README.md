@@ -334,12 +334,12 @@ structure:
 For binary data exchange (UNIX/TCP sockets), the following format MUST be kept
 for both JSON RPC API requests and responses:
 
-| Byte range | Size | Value                                |
-| ---------- | ---- | ------------------------------------ |
-| 0          | 1    | Engine version                       |
-| 1          | 1    | Data format code (2 for msgpack)     |
-| 2-5        | 4    | JSON RPC frame length (little-endian |
-| 6-         |      | JSON RPC request / response frame    |
+| Byte range | Size | Value                                 |
+| ---------- | ---- | ------------------------------------- |
+| 0          | 1    | Engine version                        |
+| 1          | 1    | Data format code (2 for msgpack)      |
+| 2-5        | 4    | JSON RPC frame length (little-endian) |
+| 6-         |      | JSON RPC request / response frame     |
 
 ### 4.5 HTTP
 
