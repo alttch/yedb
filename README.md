@@ -2,6 +2,8 @@
 
 Version: **1**
 
+<img src="https://github.com/alttch/yedb/blob/main/yedb.jpg?raw=true" align="right">
+
 ## 1. General
 
 - YEDB is the database format / engine, designed to store configuration files
