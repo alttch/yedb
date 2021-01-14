@@ -227,6 +227,7 @@ provide setters for them:
 | repair                 |                               | Repair broken keys, delete unrepairable                   |
 | check                  |                               | Check keys                                                |
 | info                   |                               | Get database info                                         |
+| set\_auto\_flush       | mode: bool                    | Set auto-flush mode                                       |
 | key\_exists            | key: String                   | Return boolean True if the key exists, False if does not  |
 | key\_get               | key: String                   | Get key value                                             |
 | key\_explain           | key: String                   | Get key value and extended info                           |
