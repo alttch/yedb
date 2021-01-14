@@ -1,4 +1,4 @@
-#  YEDB specifications
+# YEDB specifications
 
 Version: **1**
 
