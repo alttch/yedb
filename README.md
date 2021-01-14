@@ -28,7 +28,7 @@ Version: **1**
 
 ## 1.1 Implementations
 
-- [yedb-py](https://github.com/alttch/yedb-py) - Python library and
+- [yedb-py](https://github.com/alttch/yedb-py) - pure Python library and
   client/server.
 
 ## 1.2 References
