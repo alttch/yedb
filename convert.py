@@ -18,3 +18,4 @@ with open('index.j2') as fh:
 (build_dir / 'index.html').write_text(tpl.render(dict(readme=readme)))
 
 shutil.copy('yedb.jpg', build_dir)
+shutil.copy('bg.png', build_dir)
