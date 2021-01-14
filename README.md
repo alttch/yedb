@@ -324,10 +324,10 @@ structure:
 
 ### 4.3 Server types
 
-| Type        | Serialization formats | Notes                              |
-| ----------- | --------------------- | ---------------------------------- |
-| Socket      | msgpack               | TCP / UNIX socket                  |
-| HTTP        | msgpack, json         | MUST respond on HTTP/POST at "/"   |
+| Type       | Serialization formats | Notes                                                             |
+| ---------- | --------------------- | ----------------------------------------------------------------- |
+| TCP socket | msgpack               | The default port SHOULD be 8870                                   |
+| HTTP       | msgpack, json         | The default port SHOULD be 8878                                   |
 
 ### 4.4 Binary packets format
 
