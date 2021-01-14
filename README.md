@@ -227,7 +227,7 @@ provide setters for them:
 | repair                 |                               | Repair broken keys, delete unrepairable                   |
 | check                  |                               | Check keys                                                |
 | info                   |                               | Get database info                                         |
-| set\_auto\_flush       | mode: bool                    | Set auto-flush mode                                       |
+| server\_set            | name: String, value: Value    | Modify server options                                     |
 | key\_exists            | key: String                   | Return boolean True if the key exists, False if does not  |
 | key\_get               | key: String                   | Get key value                                             |
 | key\_explain           | key: String                   | Get key value and extended info                           |
@@ -274,7 +274,16 @@ The method MUST return the following data object:
 
 The object MAY contain additional fields.
 
-#### 3.3.5 Key Explain
+#### 3.3.5 Server set
+
+The following server parameters are allowed to be modified on-the-flow:
+
+| Name                |
+| ------------------- |
+| auto\_flush         |
+| repair\_recommended |
+
+#### 3.3.6 Key Explain
 
 The method MUST return the following data object:
 
