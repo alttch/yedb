@@ -334,10 +334,11 @@ structure:
 
 ### 4.3 Server types
 
-| Type       | Serialization formats | Notes                                                             |
-| ---------- | --------------------- | ----------------------------------------------------------------- |
-| TCP socket | msgpack               | The default port SHOULD be 8870                                   |
-| HTTP       | msgpack, json         | The default port SHOULD be 8878                                   |
+| Type        | Serialization formats | Notes                                                             |
+| ----------- | --------------------- | ----------------------------------------------------------------- |
+| UNIX socket | msgpack               | The name SHOULD have the suffix ".sock" or ".socket"              |
+| TCP socket  | msgpack               | The default port SHOULD be 8870                                   |
+| HTTP        | msgpack, json         | The default port SHOULD be 8878                                   |
 
 ### 4.4 Binary packets format
 
