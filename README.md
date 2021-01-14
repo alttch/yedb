@@ -300,9 +300,12 @@ The method MUST return the following data object:
 
 The object MAY contain additional fields.
 
+If key explain is requested for a schema key, it MUST start with "!" symbol to
+tell clients that the key does not physically exists in the database.
+
 If the database engine has data type schemas (see 2.4.3) implemented, the
-*schema* field for *.schema* keys MUST contain the value "JSON Schema VERSION",
-e.g. "JSON Schema Draft-7".
+*schema* field for *.schema* keys MUST contain the value "!JSON Schema VERSION",
+e.g. "!JSON Schema Draft-7".
 
 If schema implements custom data types, this MUST be clearly and properly
 explained. E.g. if a key schema defines that keys must contain valid Python
