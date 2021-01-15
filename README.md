@@ -197,9 +197,9 @@ with an exclusively-locked file, respected by other engine instances.
 
 #### 3.1.1 Writing and flushing data
 
-If data flushing is enabled, the key and database data MUST be written into a
-temporary file. After, the file MUST be flushed with the corresponding system
-call (e.g.  *fd.flush(); libc::fsync(fd)*).
+If data flushing is enabled, the key and database data MUST be written into
+temporary files. After, these files MUST be flushed with the corresponding
+system call (e.g.  *fd.flush(); libc::fsync(fd)*).
 
 After the successful flushing:
 
@@ -208,12 +208,12 @@ After the successful flushing:
 - the key directory MUST be flushed as well
 
 - if "write\_modified\_only" parameter is set, the engine MUST make sure the
-  key value is changed before writing any data to disk.
+  key value is changed before writing any data to the disk.
 
 ### 3.2 Public database object variables
 
-The database object MUST have the following variables either as public or
-provide setters for them:
+The database object MUST have the following variables, defined either as public
+or provide setters for them:
 
 | Name                  | Type   | Default | Description                            |
 | --------------------- | ------ | ------- | -------------------------------------- |
@@ -224,29 +224,29 @@ provide setters for them:
 
 ### 3.3 Mandatory methods
 
-| Name                   | Args                          | Brief description                                         |
-| ---------------------- | ----------------------------- | --------------------------------------------------------- |
-| purge                  |                               | Remove all except keys and meta, delete broken keys       |
-| safe\_purge            |                               | Same as purge but does not delete broken keys             |
-| repair                 |                               | Repair broken keys, delete unrepairable                   |
-| check                  |                               | Check keys                                                |
-| info                   |                               | Get database info                                         |
-| server\_set            | name: String, value: Value    | Modify server options                                     |
-| key\_exists            | key: String                   | Return boolean True if the key exists, False if does not  |
-| key\_get               | key: String                   | Get key value                                             |
-| key\_explain           | key: String                   | Get key value and extended info                           |
-| key\_set               | key: String, value            | Set key value                                             |
-| key\_decrement         | key: String                   | Decrement value of numeric (integer) key                  |
-| key\_delete            | key: String                   | Delete key                                                |
-| key\_delete\_recursive | key: String                   | Delete key and all its subkeys                            |
-| key\_increment         | key: String                   | Increment value of numeric (integer) key                  |
-| key\_list              | key: String                   | List key and all its subkeys Vec<String>                  |
-| key\_list\_all         | key: String                   | List key and all its subkeys, including hidden            |
-| key\_get\_recursive    | key: String                   | Get value of the key and all subkeys Vec\<String, Value\> |
-| key\_copy              | key: String, dst\_key: String | Copy key value                                            |
-| key\_rename            | key: String, dst\_key: String | Rename key / key tree                                     |
-| key\_dump              | key: String                   | Get value of the key and all subkeys, ignore broken       |
-| key\_load              | data: Vec\<String, Value\>    | Load dumped keys back                                     |
+| Name                   | Args                          | Brief description                                        |
+| ---------------------- | ----------------------------- | -------------------------------------------------------- |
+| purge                  |                               | Remove all except key files and meta, delete broken keys |
+| safe\_purge            |                               | The same as purge but don't not delete broken keys       |
+| repair                 |                               | Repair broken keys, deletes unrepairable                 |
+| check                  |                               | Check keys                                               |
+| info                   |                               | Get database info                                        |
+| server\_set            | name: String, value: Value    | Modify server options                                    |
+| key\_exists            | key: String                   | Return boolean True if the key exists; False if does not |
+| key\_get               | key: String                   | Get key value                                            |
+| key\_explain           | key: String                   | Get key value and extended info                          |
+| key\_set               | key: String, value            | Set key value                                            |
+| key\_decrement         | key: String                   | Decrement values of numeric (integer) keys               |
+| key\_delete            | key: String                   | Delete the key                                           |
+| key\_delete\_recursive | key: String                   | Delete the key and all its subkeys                       |
+| key\_increment         | key: String                   | Increment value of numeric (integer) keys                |
+| key\_list              | key: String                   | List the key and all its subkeys Vec<String>             |
+| key\_list\_all         | key: String                   | List key and all its subkeys, including hidden           |
+| key\_get\_recursive    | key: String                   | Get the key value and all subkeys Vec\<String, Value\>   |
+| key\_copy              | key: String, dst\_key: String | Copy the key value                                       |
+| key\_rename            | key: String, dst\_key: String | Rename the key / key tree                                |
+| key\_dump              | key: String                   | Get value of the key and all subkeys, ignores broken     |
+| key\_load              | data: Vec\<String, Value\>    | Load dumped keys back                                    |
 
 #### 3.3.1 Purge
 
@@ -256,7 +256,7 @@ keys.
 #### 3.3.2 Repair
 
 The method MUST return a Generator\<(String, bool)\> or an array/list of
-deleted broken keys, where bool value is *true* if the key is repaired and
+deleted broken keys, where the bool value is *true* if the key is repaired and
 *false* if the key has been deleted.
 
 #### 3.3.3 Check
@@ -267,16 +267,16 @@ The method MUST return a Generator\<String\> or an array/list of broken keys.
 
 The method MUST return the following data object:
 
-| Name                | Type             | Description                                        |
-| ------------------- | ---------------- | -------------------------------------------------- |
-| auto\_flush         | bool             | Flush key data to disk immediately                 |
-| checksums           | bool             | Checksums enabled                                  |
-| created             | u64              | Database creation timestamp                        |
-| fmt                 | String           | Current data serialization format                  |
-| path                | bool             | Database path (server local)                       |
-| repair\_recommended | bool             | Database repair is recommended (not auto-repaired) |
-| server              | (String, String) | Server engine ID / Version (custom values)         |
-| version             | u16              | Engine version                                     |
+| Name                | Type             | Description                                            |
+| ------------------- | ---------------- | -----------------------------------------------    --- |
+| auto\_flush         | bool             | Flush key data to disk immediately                     |
+| checksums           | bool             | Checksums enabled                                      |
+| created             | u64              | Database creation timestamp                            |
+| fmt                 | String           | Current data serialization format                      |
+| path                | bool             | Database path (server local)                           |
+| repair\_recommended | bool             | Database "repair recommended" flag (not auto-repaired) |
+| server              | (String, String) | Server engine ID / Version (custom values)             |
+| version             | u16              | Engine version                                         |
 
 The object MAY contain additional fields.
 
@@ -299,55 +299,56 @@ The method MUST return the following data object:
 | schema              | String           | JSON schema key if schema is defined                       |
 | len                 | u64              | length for strings, objects and arrays, null for others    |
 | mtime               | u64              | Key file modification timestamp                            |
-| stime               | u64              | Key modification timestamp, null if checksums are disabled |
+| stime               | u64              | Key modification timestamp; null if checksums are disabled |
 | sha256              |                  | SHA256-checksum, MUST be serialized to String              |
 | type                |                  | Value type (see 2.4.2), MUST be serialized to String       |
 | value               |                  | Key value                                                  |
 
 The object MAY contain additional fields.
 
-If key explain is requested for a schema key, it MUST start with "!" symbol to
-tell clients that the key does not physically exists in the database.
+If key explain is requested for a schema key, its "schema" field MUST be
+started with "!" symbol to inform clients that the key does not physically
+exist in the database.
 
 If the database engine has data type schemas (see 2.4.3) implemented, the
 *schema* field for *.schema* keys MUST contain the value "!JSON Schema VERSION",
 e.g. "!JSON Schema Draft-7".
 
-If schema implements custom data types, this MUST be clearly and properly
+If the schema implements custom data types, this MUST be clearly and properly
 explained. E.g. if a key schema defines that keys must contain valid Python
 code, the value MUST contain either "Python" or the link to
 [python.org](https://www.python.org/).
 
 #### 3.3.7 Key increment and decrement methods
 
-- The methods SHOULD support support working with at least 64-bit integer
-  values.
+- The methods SHOULD support working with at least 64-bit integer values.
 
-- The methods SHOULD return new key value after successful increment/decrement.
+- The methods SHOULD return the new key value after successful
+  increment/decrement.
 
 
 ## 4. Engine API
 
 ### 4.1 Basics
 
-The engine MUST implements [JSON RPC
-2.0](https://www.jsonrpc.org/specification) API with the following conditions:
+The engine MUST implement [JSON RPC 2.0](https://www.jsonrpc.org/specification)
+API with the following conditions:
 
 - batch requests: optional
 - requests without a response required (with no "id" field): optional
-- all mandatory engine methods MUST be implemented
+- all mandatory engine methods MUST be provided
 
 The engine MAY implement other APIs.
 
 ### 4.2 Test
 
-The engine MUST implement "test" method, which MUST return the following
+The engine API MUST implement "test" method, which MUST return the following
 structure:
 
-| Name    | Type   | Description              |
-| --------| ------ | ------------------------ |
-| name    | String | MUST have value = "yedb" |
-| version | u16    | Engine version           |
+| Name    | Type   | Description                  |
+| --------| ------ | ---------------------------- |
+| name    | String | MUST have the value = "yedb" |
+| version | u16    | Engine version               |
 
 ### 4.3 Server types
 
@@ -360,7 +361,7 @@ structure:
 ### 4.4 Binary packets format
 
 For binary data exchange (UNIX/TCP sockets), the following format MUST be kept
-for both JSON RPC API requests and responses:
+for both client and server:
 
 | Byte range | Size | Value                                 |
 | ---------- | ---- | ------------------------------------- |
@@ -371,7 +372,7 @@ for both JSON RPC API requests and responses:
 
 ### 4.5 HTTP
 
-The HTTP transport MUST satisfy the following conditions:
+The HTTP transport MUST meet the following conditions:
 
 - The API MUST respond to HTTP/POST requests at HTTP ROOT URI ("/")
 - The API MUST accept JSON-encoded payloads by default
@@ -380,19 +381,19 @@ The HTTP transport MUST satisfy the following conditions:
 
 ### 4.6 JSON RPC Error codes
 
-- Error replies SHOULD also include correct and clear error messages.
+- Error replies SHOULD include correct and clear error messages.
 
-- Schema validation errors MUST return the detailed error messages.
+- Schema validation errors MUST return detailed error messages.
 
-The error codes, returned by server, MUST match the following:
+Error codes, returned by server, MUST match the following:
 
 ### 4.6.1 Protocol errors
 
-| Code    | Description                                    |
-| ------- | -----------------------------------------------|
-| -32600  | Invalid request                                |
-| -32601  | Method not found                               |
-| -32602  | Invalid method parameters                      |
+| Code    | Description               |
+| ------- | --------------------------|
+| -32600  | Invalid request           |
+| -32601  | Method not found          |
+| -32602  | Invalid method parameters |
 
 ### 4.6.2 Engine errors
 
@@ -407,8 +408,8 @@ The error codes, returned by server, MUST match the following:
 
 ## 5. Dump files
 
-If the engine or a client create / load dump files, these files MUST have data
-serialized with MessagePack and have the following format:
+If the engine or a client creates / loads dump files, these files MUST have
+data serialized with MessagePack and have the following format:
 
 ### 5.1 File header
 
@@ -419,7 +420,7 @@ serialized with MessagePack and have the following format:
 
 ### 5.2 Key data
 
-Stored starting from byte 2, for each key:
+Stored, starting from byte 2, for each key:
 
 | Byte range | Size | Value                               |
 | ---------- | ---- | ----------------------------------- |
