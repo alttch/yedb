@@ -236,8 +236,10 @@ provide setters for them:
 | key\_get               | key: String                   | Get key value                                             |
 | key\_explain           | key: String                   | Get key value and extended info                           |
 | key\_set               | key: String, value            | Set key value                                             |
+| key\_decrement         | key: String                   | Decrement value of numeric (integer) key                  |
 | key\_delete            | key: String                   | Delete key                                                |
 | key\_delete\_recursive | key: String                   | Delete key and all its subkeys                            |
+| key\_increment         | key: String                   | Increment value of numeric (integer) key                  |
 | key\_list              | key: String                   | List key and all its subkeys Vec<String>                  |
 | key\_list\_all         | key: String                   | List key and all its subkeys, including hidden            |
 | key\_get\_recursive    | key: String                   | Get value of the key and all subkeys Vec\<String, Value\> |
@@ -315,6 +317,14 @@ If schema implements custom data types, this MUST be clearly and properly
 explained. E.g. if a key schema defines that keys must contain valid Python
 code, the value MUST contain either "Python" or the link to
 [python.org](https://www.python.org/).
+
+#### 3.3.7 Key increment and decrement methods
+
+- The methods SHOULD support support working with at least 64-bit integer
+  values.
+
+- The methods SHOULD return new key value after successful increment/decrement.
+
 
 ## 4. Engine API
 
