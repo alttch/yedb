@@ -29,7 +29,9 @@ Version: **1**
 ## 1.1 Implementations
 
 - [yedb-py](https://github.com/alttch/yedb-py) - pure Python library and
-  client/server.
+  client/server. Extra features: byte objects, database serialization format
+  conversion. "pickle" serialization format, which can store Python objects
+  directly (embedded only).
 
 ## 1.2 References
 
