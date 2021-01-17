@@ -74,13 +74,14 @@ file MUST be serialized as JSON and contain the following fields:
 
 #### 2.3.1 General
 
-Key files MUST be stored in regular files. The format MUST be kept to allow
-system administrators repair a database without any external tools. The full
-path tree, where a key file is stored, MUST represent the key full name.
+Key values MUST be stored in regular files in "keys" subdirectory. The format
+MUST be kept to allow system administrators repair a database without any
+external tools. The full path tree, where a key file is stored, MUST represent
+the key full name.
 
 Example: a key, named "my/cool/key" should be:
 
-- stored in "my/cool" directory
+- stored in "keys/my/cool" directory
 
 - named "key" with the extension, representing the data serialization format
 
@@ -178,6 +179,9 @@ If implemented, the implementation MUST satisfy the following requirements:
 
 - The database engine MUST support locking. Usually the locking can be performed
 with an exclusively-locked file, respected by other engine instances.
+
+- The default lock file SHOULD be called "db.lock" and created in the database
+  root directory. The lock file SHOULD contain the owner process ID.
 
 - The engine MUST allow variable location of the lock file, allowing using of
   databases on read-only file systems.
