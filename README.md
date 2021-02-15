@@ -231,7 +231,7 @@ or provide setters for them:
 | Name                   | Args                          | Brief description                                        |
 | ---------------------- | ----------------------------- | -------------------------------------------------------- |
 | purge                  |                               | Remove all except key files and meta, delete broken keys |
-| safe\_purge            |                               | The same as purge but don't not delete broken keys       |
+| safe\_purge            |                               | The same as purge but do not delete broken keys          |
 | repair                 |                               | Repair broken keys, deletes unrepairable                 |
 | check                  |                               | Check keys                                               |
 | info                   |                               | Get database info                                        |
