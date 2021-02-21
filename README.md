@@ -33,6 +33,9 @@ Version: **1**
   conversion. "pickle" serialization format, which can store Python objects
   directly (embedded only).
 
+- [yedb-rs](https://github.com/alttch/yedb-rs) - Rust version. Faster, more
+  reliable. Byte objects are not supported.
+
 ## 1.2 References
 
 The following third-party technologies are mentioned in this document:
