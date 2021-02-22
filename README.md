@@ -14,7 +14,7 @@ Version: **1**
 
 - YEDB is the data serialization / storage engine, used by
   [AlterTech](https://www.altertech.com) in industrial and embedded software
-  products.
+  IoT/IIoT products.
 
 - YEDB has the free data format which can be used under Apache 2.0 software
   license.
