@@ -2,7 +2,7 @@
 
 Version: **1**
 
-<img src="https://github.com/alttch/yedb/blob/main/yedb.jpg?raw=true" align="right">
+<img src="https://github.com/alttch/yedb/blob/main/yedb.png?raw=true" align="right">
 
 ## 1. General
 
