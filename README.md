@@ -13,6 +13,7 @@ Version: **1**
   file system is broken.
 
 - YEDB is the data serialization / storage engine, used by
+  [Bohemia Automation](https://www.bohemia-automation.com) and
   [AlterTech](https://www.altertech.com) in industrial and embedded software
   IoT/IIoT products.
 
